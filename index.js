@@ -25,4 +25,4 @@ var urlencodedParser = bodyParser.urlencoded({
 // POST /login gets urlencoded bodies
 app.post('/pull', urlencodedParser, respond)
 
-app.listen(8080, () => console.log('Example app listening on port 3000!'))
+app.listen(8080, () => console.log('Example app listening on port 3000!'));
