@@ -2,7 +2,7 @@ let restify = require('restify');
 let cmd = require('node-cmd');
 
 function respond(req, res, next) {
-	// console.log(req);
+	console.log(req);
     cmd.get('update.cmd', (err, data, stderr) => {
         //console.log(err, data, stderr);
         res.send(data);
