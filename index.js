@@ -1,15 +1,14 @@
 let cmd = require('node-cmd');
 
 function respond(req, res, next) {
-    console.log(req.params);
 	console.log(req.body);
-	console.log(req.query);
     cmd.get('update.cmd', (err, data, stderr) => {
         //console.log(err, data, stderr);
         res.send(data);
         next();
     });
 }
+
 
 var express = require('express')
 var bodyParser = require('body-parser')
