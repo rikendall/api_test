@@ -1,8 +1,7 @@
-let restify = require('restify');
 let cmd = require('node-cmd');
 
 function respond(req, res, next) {
-	console.log(req);
+    console.log(req);
     cmd.get('update.cmd', (err, data, stderr) => {
         //console.log(err, data, stderr);
         res.send(data);
@@ -10,10 +9,20 @@ function respond(req, res, next) {
     });
 }
 
-let server = restify.createServer();
-server.post('/pull', respond);
-server.get('/pull', respond);
+var express = require('express')
+var bodyParser = require('body-parser')
 
-server.listen(8080, function () {
-    console.log('%s listening at %s', server.name, server.url);
-});
+var app = express()
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({
+    extended: false
+})
+
+// POST /login gets urlencoded bodies
+app.post('/pull', urlencodedParser, respond)
+
+app.listen(8080, () => console.log('Example app listening on port 3000!'))
