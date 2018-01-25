@@ -1,12 +1,14 @@
 let cmd = require('node-cmd');
 
 function respond(req, res, next) {
-	console.log(req.body);
-    cmd.get('update.cmd', (err, data, stderr) => {
-        //console.log(err, data, stderr);
-        res.send(data);
-        next();
-    });
+	const body = req.body;
+	if(body.ref === "refs/heads/feature/2020"){
+		cmd.get('update.cmd', (err, data, stderr) => {
+			//console.log(err, data, stderr);
+			res.send(data);
+			next();
+		});
+	}
 }
 
 
