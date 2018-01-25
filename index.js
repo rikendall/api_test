@@ -4,7 +4,7 @@ function respond(req, res, next) {
 	const body = req.body;
 	if(body.ref === "refs/heads/feature/2020"){
 		cmd.get('update.cmd', (err, data, stderr) => {
-			//console.log(err, data, stderr);
+			console.log(err, data, stderr);
 			res.send(data);
 			next();
 		});
